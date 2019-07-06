@@ -3,42 +3,47 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import pages from './pages'
 
-import logo from './assets/logo.svg'
+import { Link } from './components'
 
-console.log(pages)
+function mapLinks({ name, to, children, exact }, index) {
+  if (children) {
+    return (
+      <li key={index}>
+        <Link exact={exact} to={to} text={name} />
+        <ul className='sublist'>{children.map(mapLinks)}</ul>
+      </li>
+    )
+  }
+  return (
+    <li key={index}>
+      <Link exact={exact} to={to} text={name} />
+    </li>
+  )
+}
 
-for (const page in pages) {
-  console.log(page)
+function mapPages({ name, to, children, Component, exact }, index) {
+  if (children) {
+    return children.map(mapPages)
+  }
+
+  return <Route exact={exact} key={index} path={to} component={Component} />
 }
 
 function App() {
-  // const [data, setData] = useState(null)
-
-  // const userID = '4261235830'
-  // const token = '4261235830.a3cdfcd.e54fa101ce334dbc8391e7a0d60c4740'
-
-  // useEffect(() => {
-  //   fetch(
-  //     `https://api.instagram.com/v1/users/${userID}/media/recent/?access_token=${token}`
-  //   )
-  //     .then(response => response.json())
-  //     .then(result => {
-  //       setData(result)
-  //     })
-  // }, [])
-
   return (
-    <div className='App'>
-      <Router>
-        <Switch>
-          <Route exact path='/' component={pages.home} />
-          <Route path='/contact' component={pages.contact} />
-          {Object.entries(pages).map(([name, C], index) => (
-            <Route key={index} path={`/${name}`} component={C} />
-          ))}
-        </Switch>
-      </Router>
-    </div>
+    <Router>
+      <div className='main-wrapper'>
+        {/* <Navigation /> */}
+        <div className='main-nav-wrapper'>
+          <nav className='main-nav'>
+            <ul className='list'>{pages.map(mapLinks)}</ul>
+          </nav>
+        </div>
+        <main className='main-container'>
+          <Switch>{pages.map(mapPages)}</Switch>
+        </main>
+      </div>
+    </Router>
   )
 }
 

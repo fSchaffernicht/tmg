@@ -8,38 +8,19 @@ const userID = '4261235830'
 const token = '4261235830.a3cdfcd.e54fa101ce334dbc8391e7a0d60c4740'
 
 export default function Home() {
-  const { error, data, loading } = useFetch(
-    `https://api.instagram.com/v1/users/${userID}/media/recent/?access_token=${token}`
-  )
-  console.log('>>>>>', error, data, loading)
+  // const { error, data, loading } = useFetch(
+  //   `https://api.instagram.com/v1/users/${userID}/media/recent/?access_token=${token}`
+  // )
   return (
     <div className='container'>
       <Grid>
-        <img src={logo} alt='logo' />
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-      </Grid>
-      <Grid>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-      </Grid>
-      <Grid>
-        <div>1</div>
-        <div>2</div>
-      </Grid>
-      <Grid>
-        <div>1</div>
-      </Grid>
-      <Grid>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
-        <div>1</div>
+        Und es kommt noch ein gemaltes Bild hinzu von einem Arm dessen Hand ein
+        Stück vom Himmel abreißt. Bild muss noch erstellt werden. Cooler wäre
+        wenn man durch einen Klick die Hand dazu kriegt ein Stück abzureißen und
+        dann erscheint das Navigationsmenü aus dem Stück und rechts erscheint
+        ein Scrollkasten mit news. Also einfach nur News durch die man scrollen
+        kann ohne sichtbaren Kasten. Geht das? Müsste ich die „Animation“
+        erstellen? Oder programmiert man sowas. Oder welche frames brauchst du?
       </Grid>
     </div>
   )
