@@ -1,19 +1,49 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, Icon } from './'
 
 function Navigation({ items }) {
+  const [isOpen, setIsOpen] = useState(false)
+
   if (!items || items.length === 0) {
     return null
   }
 
   return (
-    <ul>
-      {items.map(({ name, href }) => (
-        <li>
-          <Link to={href}>{name}</Link>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <div onClick={() => setIsOpen(!isOpen)}>
+        <Icon name='menu' />
+      </div>
+      <div
+        className={
+          isOpen
+            ? 'main-navigation-wrapper slide-in'
+            : 'main-navigation-wrapper'
+        }
+      >
+        <nav className='main-navigation'>
+          <ul className='main-navigation-list'>{items.map(mapLinks)}</ul>
+        </nav>
+      </div>
+    </div>
+  )
+}
+
+function mapLinks({ name, to, children, exact }, index) {
+  if (name === 'Admin') {
+    return null
+  }
+  if (children) {
+    return (
+      <li key={index}>
+        <Link exact={exact} to={to} text={name} />
+        <ul className='sublist'>{children.map(mapLinks)}</ul>
+      </li>
+    )
+  }
+  return (
+    <li key={index}>
+      <Link exact={exact} to={to} text={name} />
+    </li>
   )
 }
 

@@ -1,5 +1,6 @@
 @import './variables';
 @import './colors';
+@import './iconfont';
 @import './util';
 @import './grid';
 @import './link';
@@ -7,15 +8,15 @@
 @import './navigation';
 
 .main-wrapper {
-  margin: 0 auto;
-  max-width: 1600px;
-  position: relative;
+  // margin: 0 auto;
+  // max-width: 1600px;
+  // position: relative;
   z-index: 1;
 }
 
 .main-container {
   position: relative;
   margin-left: $navigation-width;
-  background: white;
+  // background: white;
   min-height: 100vh;
 }

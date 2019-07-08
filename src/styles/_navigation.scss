@@ -1,13 +1,21 @@
-.main-nav-wrapper {
+.main-navigation-wrapper {
   position: absolute;
   width: $navigation-width;
   display: block;
   top: 0;
   bottom: 0;
-  left: 0;
+  right: 0;
+  transform: translateX($navigation-width);
   z-index: 3;
+  background: white;
+  transition: transform 200ms ease-in-out;
+  transition-delay: 50ms;
 
-  .main-nav {
+  &.slide-in {
+    transform: translateX(0);
+  }
+
+  .main-navigation {
     width: $navigation-width;
     position: fixed;
     top: 0;
@@ -16,19 +24,18 @@
     padding: 30px;
     overflow: auto;
 
-    .list {
+    .main-navigation-list {
       font-weight: 800;
-      color: white;
+      color: $darkblue;
       list-style: none;
       font-size: 1.25rem;
       line-height: 2;
-      text-align: right;
       position: relative;
       top: 50%;
       transform: translateY(-50%);
 
       a {
-        color: white;
+        color: $darkblue;
       }
 
       .sublist {
