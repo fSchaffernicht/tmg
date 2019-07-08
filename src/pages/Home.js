@@ -11,6 +11,8 @@ export default function Home() {
   // const { error, data, loading } = useFetch(
   //   `https://api.instagram.com/v1/users/${userID}/media/recent/?access_token=${token}`
   // )
+  const { error, data, loading } = useFetch(`http://localhost:4000`)
+  console.log(error, data, loading)
   return (
     <div className='container'>
       <Grid>

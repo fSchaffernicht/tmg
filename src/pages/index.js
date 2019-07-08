@@ -1,4 +1,5 @@
 import About from './About'
+import Admin from './Admin'
 import Comissions from './Comissions'
 import Contact from './Contact'
 import CurrentWorks from './CurrentWorks'
@@ -93,5 +94,10 @@ export default [
     name: 'Impressum',
     to: '/impressum',
     Component: Imprint
+  },
+  {
+    name: 'Admin',
+    to: '/admin',
+    Component: Admin
   }
 ]

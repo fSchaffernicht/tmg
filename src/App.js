@@ -6,6 +6,10 @@ import pages from './pages'
 import { Link } from './components'
 
 function mapLinks({ name, to, children, exact }, index) {
+  if (name === 'Admin') {
+    return null
+  }
+
   if (children) {
     return (
       <li key={index}>
@@ -40,7 +44,9 @@ function App() {
           </nav>
         </div>
         <main className='main-container'>
-          <Switch>{pages.map(mapPages)}</Switch>
+          <div className='container'>
+            <Switch>{pages.map(mapPages)}</Switch>
+          </div>
         </main>
       </div>
     </Router>
